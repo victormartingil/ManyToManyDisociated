@@ -15,12 +15,10 @@ public class JoinLibroAutor {
 	private long id;
 	
 	@ManyToOne
-//	@MapsId("libro_id")
 	@JoinColumn(name="libro_id")
 	private Libro libro;
 	
 	@ManyToOne
-//	@MapsId("autor_id")
 	@JoinColumn(name="autor_id")
 	private Autor autor;
 	

@@ -55,8 +55,8 @@ public class Libro {
 	}
 
 	public void setJoinLibrosAutores(Set<JoinLibroAutor> joinLibrosAutores) {
-		joinLibrosAutores.forEach(join -> {
-			join.setLibro(this);
+		joinLibrosAutores.forEach(element -> {
+			element.setLibro(this);
 		});
 		this.joinLibrosAutores = joinLibrosAutores;
 	}

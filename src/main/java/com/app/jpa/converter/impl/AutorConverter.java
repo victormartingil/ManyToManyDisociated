@@ -24,9 +24,9 @@ public class AutorConverter extends AbstractConverter<Autor, AutorDto>{
 	
 	public Autor convertDtoToEntity(AutorDto dto) {
 		
-		Set <JoinLibroAutor> joinLibrosAutores = new HashSet<>();
-		if (dto.getJoinLibrosAutores() != null) {
-			for (JoinLibroAutorDto element : dto.getJoinLibrosAutores()) {
+		Set<JoinLibroAutor> joinLibrosAutores = new HashSet<>();
+		if(dto.getJoinLibrosAutores() != null) {
+			for(JoinLibroAutorDto element : dto.getJoinLibrosAutores()) {
 				joinLibrosAutores.add(new JoinLibroAutor(
 											element.getLibro()!=null?new Libro(element.getLibro().getId()):null,
 											element.getAutor()!=null?new Autor(element.getAutor().getId()):null,

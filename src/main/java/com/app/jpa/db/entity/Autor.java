@@ -32,7 +32,7 @@ public class Autor {
 	public Autor(long id, String nombre, Set<JoinLibroAutor> joinLibrosAutores) {
 		this.id = id;
 		this.nombre = nombre;
-		this.joinLibrosAutores = joinLibrosAutores;
+		setJoinLibrosAutores(joinLibrosAutores);
 	}
 
 	public long getId() {
@@ -56,6 +56,9 @@ public class Autor {
 	}
 
 	public void setJoinLibrosAutores(Set<JoinLibroAutor> joinLibrosAutores) {
+		joinLibrosAutores.forEach(element -> {
+			element.setAutor(this);
+		});
 		this.joinLibrosAutores = joinLibrosAutores;
 	}
 

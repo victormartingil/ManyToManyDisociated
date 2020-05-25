@@ -23,16 +23,15 @@ public class LibroConverter extends AbstractConverter<Libro, LibroDto>{
 	public LibroConverter () {
 	}
 	
-	
 	public Libro convertDtoToEntity(LibroDto dto) {
 		
 		Set<JoinLibroAutor> joinLibrosAutores = new HashSet<>();
-		JoinLibroAutor entity = new JoinLibroAutor();
-		if (dto.getJoinLibrosAutores() != null) {
-			for(JoinLibroAutorDto join : dto.getJoinLibrosAutores()) {
-				entity.setAutor(new Autor(join.getAutor().getId()));
-				entity.setEditorial(join.getEditorial());
-				joinLibrosAutores.add(entity);
+		if(dto.getJoinLibrosAutores() != null) {
+			for(JoinLibroAutorDto element : dto.getJoinLibrosAutores()) {
+				joinLibrosAutores.add(new JoinLibroAutor(
+											element.getLibro()!=null?new Libro(element.getLibro().getId()):null,
+											element.getAutor()!=null?new Autor(element.getAutor().getId()):null,
+											element.getEditorial()));
 			}
 		}
 		
