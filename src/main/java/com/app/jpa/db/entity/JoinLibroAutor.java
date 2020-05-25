@@ -1,24 +1,24 @@
 package com.app.jpa.db.entity;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 @Entity
 public class JoinLibroAutor {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@EmbeddedId
+	private JoinLibroAutorId id;
 	
 	@ManyToOne
+	@MapsId("libro_id")
 	@JoinColumn(name="libro_id")
 	private Libro libro;
 	
 	@ManyToOne
+	@MapsId("autor_id")
 	@JoinColumn(name="autor_id")
 	private Autor autor;
 	
@@ -26,26 +26,26 @@ public class JoinLibroAutor {
 	
 	public JoinLibroAutor () {}
 	
-	public JoinLibroAutor(long id) {
+	public JoinLibroAutor(JoinLibroAutorId id) {
 		this (id, null, null, null);
 	}
 	
 	public JoinLibroAutor(Libro libro, Autor autor, String editorial) {
-		this(0, libro, autor, editorial);
+		this(new JoinLibroAutorId(), libro, autor, editorial);
 	}
 
-	public JoinLibroAutor(long id, Libro libro, Autor autor, String editorial) {
+	public JoinLibroAutor(JoinLibroAutorId id, Libro libro, Autor autor, String editorial) {
 		this.id = id;
 		this.libro = libro;
 		this.autor = autor;
 		this.editorial = editorial;
 	}
 
-	public long getId() {
+	public JoinLibroAutorId getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(JoinLibroAutorId id) {
 		this.id = id;
 	}
 
