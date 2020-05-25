@@ -1,0 +1,61 @@
+server:
+  # Server HTTP port.
+  port: 8080
+  servlet:
+    session:
+      cookie:
+        #Para que las cookies solo se envien si hay https
+        secure: false
+    context-path: /
+logging:
+  #file: imagar-skeleton.log
+  level:
+    #    root: INFO
+    org:
+      springframework:
+        web: DEBUG
+        security: DEBUG
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
+spring:
+  datasource:
+    url: jdbc:mysql://localhost/jpa_manytomany_disociated?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Europe/Madrid
+    username: root
+    password: root
+  data:
+    jpa:
+      repositories:
+        # Bootstrap mode for JPA repositories.
+        bootstrap-mode: default
+  ## Hibernate Properties
+  # The SQL dialect makes Hibernate generate better SQL for the chosen database
+  jpa:
+    # Whether to initialize the schema on startup.
+    generate-ddl: true
+    # Whether to enable logging of SQL statements.
+    show-sql: true
+    hibernate:
+      # Hibernate ddl auto (create, create-drop, validate, update)
+      ddl-auto: update
+    properties:
+      hibernate:
+        # The SQL dialect makes Hibernate generate better SQL for the chosen database
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  mail:
+    default-encoding: UTF-8
+    host: localhost
+    port: 25
+    username: root
+    password: root
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+    test-connection: false

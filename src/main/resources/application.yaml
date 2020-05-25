@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: '@war.name@.war'
+  profiles:
+    active: '@activatedProfile@'

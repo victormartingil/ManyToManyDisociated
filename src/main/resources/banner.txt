@@ -1,0 +1,7 @@
+==================================================
+Application War:      '${spring.application.name}'
+Spring Boot Version:  '${spring-boot.version}'
+Application Profiles: '${spring.profiles.active}'
+Port:                 '${server.port}'
+Context-path:         '${server.servlet.context-path}'
+==================================================
